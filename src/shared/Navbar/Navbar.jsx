@@ -1,20 +1,22 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <a>Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a>Contact Us</a>
+        <Link to="/contactUs">Contact Us</Link>
       </li>
       <li>
         <a>Dashboard</a>
       </li>
       <li>
-        <a>Our Menu</a>
+        <Link to="/ourMenu">Our Menu</Link>
       </li>
       <li>
-        <a>Our Shop</a>
+        <Link to="/ourShop">Our Shop</Link>
       </li>
     </>
   );
@@ -51,7 +53,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <Link to="/login" className="btn">
+          Login
+        </Link>
         <div className="avatar">
           <div className="w-12 rounded-full">
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
