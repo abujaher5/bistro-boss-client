@@ -21,12 +21,12 @@ const Testimonials = () => {
         setReviews(data);
       });
   }, []);
-  console.log(reviews);
+
   return (
     <section className="my-8">
       <SectionTitle
-        subHeading={"What Our Client Say"}
-        heading={"Testimonials"}
+        subHeading="What Our Client Say"
+        heading="Testimonials"
       ></SectionTitle>
 
       <div className="mt-20">
