@@ -12,11 +12,6 @@ const MenuCategory = ({ items, title, img }) => {
         ))}
       </div>
       <div className="text-center my-2 ">
-        {/* <Link to={`/order/${title}`}>
-          <button className="btn btn-outline border-0 border-b-4 mt-4 bg-green-500">
-            Order Now
-          </button>
-        </Link> */}
         <Link to={`/order/${title}`}>
           <button className="btn btn-outline border-0 border-b-4 mt-4 bg-green-500">
             Order Now

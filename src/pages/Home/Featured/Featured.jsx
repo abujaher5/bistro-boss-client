@@ -2,7 +2,6 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 import featuredImage from "../../../assets/home/featured.jpg";
 import "./Featured.css";
-import { Link } from "react-router-dom";
 
 const Featured = () => {
   return (
@@ -11,12 +10,12 @@ const Featured = () => {
         subHeading={"Check it out"}
         heading={"Featured Item"}
       ></SectionTitle>
-      <div className="flex justify-center items-center bg-slate-700 bg-opacity-30 p-20 gap-4 mx-20 ">
+      <div className="flex justify-center items-center bg-slate-700 bg-opacity-30 p-20 gap-10 mx-20 ">
         <div className="ml-20 bg-fixed">
           <img className="w-3/2 h-1/2" src={featuredImage} alt="" />
         </div>
 
-        <div className="text-left py-20 mr-20">
+        <div className="text-left space-y-3 py-20 mr-20">
           <p>Date March 20,2024</p>
           <h2 className="uppercase text-xl font-semibold">
             Where Can I Get Some?
@@ -27,11 +26,11 @@ const Featured = () => {
             voluptate placeat vero, saepe illum quas quibusdam aliquid, ratione
             similique facere odit.
           </p>
-          <Link to="">
-            <button className="font-semibold uppercase border-b-3 rounded-lg ">
+          <div>
+            <button className="font-semibold py-3 px-4 text-center   uppercase border-white outline-none border-b-4 rounded-md ">
               Order Now
             </button>
-          </Link>
+          </div>
         </div>
       </div>
     </section>

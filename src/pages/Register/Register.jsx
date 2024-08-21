@@ -59,12 +59,12 @@ const Register = () => {
               </div>
 
               <div className="text-center space-y-4">
-                <p className="text-[#D1A054B3]">
+                <div className="text-[#D1A054B3]">
                   Already have an account !
                   <Link to="/login">
-                    <a className="font-bold">Go to Login</a>
+                    <p className="font-bold">Go to Login</p>
                   </Link>
-                </p>
+                </div>
                 <p className="font-semibold">Or sign in with</p>
                 <p className="flex items-center justify-center  text-2xl gap-4">
                   <FaFacebook></FaFacebook>
