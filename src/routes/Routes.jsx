@@ -7,6 +7,7 @@ import Register from "../pages/Register/Register";
 import Menu from "../pages/Menu/Menu";
 import Order from "../pages/Order/Order";
 import ContactUs from "../pages/ContactUs/ContactUs";
+// import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
