@@ -7,6 +7,8 @@ import Register from "../pages/Register/Register";
 import Menu from "../pages/Menu/Menu";
 import Order from "../pages/Order/Order";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import Dashboard from "../layouts/Dashboard";
+import Cart from "../pages/Dashboard/Cart/Cart";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -40,6 +42,16 @@ export const router = createBrowserRouter([
       {
         path: "/contactUs",
         element: <ContactUs></ContactUs>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "cart",
+        element: <Cart></Cart>,
       },
     ],
   },
