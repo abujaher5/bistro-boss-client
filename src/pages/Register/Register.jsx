@@ -1,17 +1,15 @@
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import registerImg from "../../assets/others/authentication2.png";
 
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAuth from "../../hooks/useAuth";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 const Register = () => {
   const axiosPublic = useAxiosPublic();
-
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useAuth();
 
   const navigate = useNavigate();
   const {
@@ -164,19 +162,16 @@ const Register = () => {
                 </button>
               </div>
 
-              <div className="text-center space-y-4">
-                <div className="text-[#D1A054B3]">
-                  Already have an account !
+              <div className="text-center mt-2">
+                <div>
+                  <p className="text-[#D1A054B3]"> Already have an account !</p>
                   <Link to="/login">
-                    <p className="font-bold">Go to Login</p>
+                    <p className="font-bold text-[#D1A054B3]">Go to Login</p>
                   </Link>
+                  <div className="mt-2">
+                    <SocialLogin></SocialLogin>
+                  </div>
                 </div>
-                <p className="font-semibold">Or sign in with</p>
-                <p className="flex items-center justify-center  text-2xl gap-4">
-                  <FaFacebook></FaFacebook>
-                  <FaGoogle></FaGoogle>
-                  <FaGithub></FaGithub>
-                </p>
               </div>
             </form>
           </div>

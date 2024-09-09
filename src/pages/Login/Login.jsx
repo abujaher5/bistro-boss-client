@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/others/authentication1.png";
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
+
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -10,6 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   // const captchaRef = useRef(null);
@@ -151,18 +152,17 @@ const Login = () => {
               </div>
 
               <div className="text-center space-y-4">
-                <div className="text-[#D1A054B3]">
-                  New here?
+                <div>
+                  <p className="text-[#D1A054B3]">New here?</p>
                   <Link to="/register">
-                    <p className="font-bold">Create a New Account</p>
+                    <p className="font-bold text-[#D1A054B3]">
+                      Create a New Account
+                    </p>
                   </Link>
                 </div>
-                <p className="font-semibold">Or sign in with</p>
-                <p className="flex items-center justify-center  text-2xl gap-4">
-                  <FaFacebook></FaFacebook>
-                  <FaGoogle></FaGoogle>
-                  <FaGithub></FaGithub>
-                </p>
+                <div className="mt-2">
+                  <SocialLogin></SocialLogin>
+                </div>
               </div>
             </form>
           </div>
