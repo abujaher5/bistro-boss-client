@@ -3,28 +3,33 @@ import { useEffect, useState } from "react";
 import useAxiosFetch from "../../../hooks/useAxiosFetch";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
   const [error, setError] = useState("");
-
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosFetch();
   const { user } = useAuth();
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
+
+  const navigate = useNavigate();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
   useEffect(() => {
-    axiosSecure
-      .post("/create-payment-intent", {
-        price: totalPrice,
-      })
-      .then((res) => {
-        console.log(res.data.clientSecret);
-        setClientSecret(res.data.clientSecret);
-      });
+    if (totalPrice > 0) {
+      axiosSecure
+        .post("/create-payment-intent", {
+          price: totalPrice,
+        })
+        .then((res) => {
+          console.log(res.data.clientSecret);
+          setClientSecret(res.data.clientSecret);
+        });
+    }
   }, [axiosSecure, totalPrice]);
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -69,6 +74,32 @@ const CheckoutForm = () => {
       if (paymentIntent.status === "succeeded") {
         console.log("transaction id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
+
+        //  now save the payment history in the database
+
+        const payment = {
+          email: user.email,
+          price: totalPrice,
+          transactionId: paymentIntent.id,
+          data: new Date(), // utc data convert  use moment js to
+          cartIds: cart.map((item) => item._id),
+          menuItemIds: cart.map((item) => item.menuId),
+          status: "pending",
+        };
+
+        const res = await axiosSecure.post("/payments", payment);
+        console.log("payment save", res.data);
+        refetch();
+        if (res.data?.paymentResult?.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Thanks For Make Payment",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/dashboard/paymentHistory");
+        }
       }
     }
   };
