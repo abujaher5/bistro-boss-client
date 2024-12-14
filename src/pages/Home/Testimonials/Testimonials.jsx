@@ -15,7 +15,7 @@ const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9000/reviews")
+    fetch("https://bistro-boss-server-lemon-iota.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

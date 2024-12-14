@@ -12,7 +12,7 @@ const useMenu = () => {
   // const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
-  //   fetch("http://localhost:9000/menu")
+  //   fetch("https://bistro-boss-server-lemon-iota.vercel.app/menu")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setMenu(data);
